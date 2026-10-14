@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>@jubang.salimpick 영상 속 제품</title>
-<meta name="description" content="릴스·쇼츠 영상 번호별 제품과 사기 전 확인할 점">
+<title>@jubang.salimpick 영상 속 제품 찾기</title>
+<meta name="description" content="릴스·쇼츠 영상 끝 번호로 제품과 사기 전 확인할 점을 찾아요">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="icon" type="image/png" sizes="32x32" href="brand/favicon-32.png">
 <link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
-<meta name="theme-color" content="#E4572E">
-<meta property="og:title" content="좁은주방 살림픽 · 영상 속 제품">
-<meta property="og:description" content="영상 번호별 제품과 사기 전에 확인할 점">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#17171C" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="좁은주방 살림픽 · 영상 속 제품 찾기">
+<meta property="og:description" content="영상 끝 번호를 넣으면 제품과 사기 전에 확인할 점이 바로 나와요">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://meleerosa.github.io/salimpick/">
 <meta property="og:image" content="https://meleerosa.github.io/salimpick/brand/og.png">
@@ -18,529 +19,177 @@
 <meta name="twitter:card" content="summary_large_image">
 <!-- lib/link_hub.py 가 만든다. 직접 고치지 말 것. 쿠키·방문 추적 없음. -->
 <style>
-:root{--acc:#E4572E;--acc-ink:#B23A16;--bg:#F6F5F2;--card:#FFFFFF;--ink:#1C1B19;--sub:#625E57;--line:#E2DED6;--tint:#FBE7DF;--off:#D9D5CD}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--acc:#FF7A52;--acc-ink:#FFB49C;--bg:#141312;--card:#1D1C1A;--ink:#EEEBE6;--sub:#ACA69C;--line:#34312D;--tint:#3A231B;--off:#3A3733}}
-:root[data-theme="dark"]{--acc:#FF7A52;--acc-ink:#FFB49C;--bg:#141312;--card:#1D1C1A;--ink:#EEEBE6;--sub:#ACA69C;--line:#34312D;--tint:#3A231B;--off:#3A3733}
+:root{--acc:#CC4418;--acc-ink:#B23A16;--on-acc:#FFFFFF;--tint:#FFF1EB;--bg:#FFFFFF;--band:#F2F4F6;--field:#F2F4F6;--ink:#191F28;--sub:#4E5968;--mute:#6B7684;--line:#E5E8EB;--off:#E5E8EB}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--acc:#FF7A52;--acc-ink:#FF9F80;--on-acc:#17171C;--tint:#3A231B;--bg:#17171C;--band:#101013;--field:#26262D;--ink:#ECECEE;--sub:#B0B4BB;--mute:#8B8F97;--line:#2C2C35;--off:#2C2C35}}
+:root[data-theme="dark"]{--acc:#FF7A52;--acc-ink:#FF9F80;--on-acc:#17171C;--tint:#3A231B;--bg:#17171C;--band:#101013;--field:#26262D;--ink:#ECECEE;--sub:#B0B4BB;--mute:#8B8F97;--line:#2C2C35;--off:#2C2C35}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;word-break:keep-all;overflow-wrap:anywhere}
-.wrap{max-width:480px;margin:0 auto;padding:0 16px 40px}
-.disc{margin:0 -16px;padding:10px 16px;background:var(--tint);color:var(--ink);font-size:13px;line-height:1.5}
-h1{font-size:21px;margin:20px 0 4px;letter-spacing:-.02em}
-.lead{margin:0 0 6px;color:var(--sub);font-size:14px}
-.asof{margin:0 0 16px;color:var(--sub);font-size:13px}
-.list{display:grid;gap:12px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;grid-template-columns:72px minmax(0,1fr);gap:8px 12px;align-items:start}
-.card .th{width:72px;height:72px;border-radius:10px;object-fit:cover;background:var(--off);display:block}
-.card .tx{min-width:0;display:grid;gap:4px}
-.no{display:inline-block;justify-self:start;font-size:12px;font-weight:700;color:var(--acc-ink);background:var(--tint);border-radius:999px;padding:1px 10px}
-.card h2{margin:0;font-size:16px;line-height:1.4}
-.lim{margin:0;color:var(--sub);font-size:13px}
-.lim b{font-weight:700}
-.go{grid-column:1/-1;display:flex;align-items:center;justify-content:center;min-height:46px;padding:0 16px;border-radius:10px;background:var(--acc);color:#fff;text-decoration:none;font-weight:700;font-size:15px}
-.go:focus-visible{outline:3px solid var(--acc-ink);outline-offset:2px}
-:root[data-theme="dark"] .go{color:#141312}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .go{color:#141312}}
-.go[aria-disabled="true"]{background:var(--off);color:var(--sub);cursor:default}
-.jump{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
-.jump a{font-size:13px;font-weight:700;color:var(--acc-ink);background:var(--tint);border-radius:999px;padding:4px 11px;text-decoration:none;min-height:30px;display:inline-flex;align-items:center}
-.card.new{border:2px solid var(--acc)}
-.new-b{font-size:12px;font-weight:700;color:var(--acc-ink);margin-left:6px}
-.pr{margin:0;font-size:14px;font-weight:700}
-.pr span{font-weight:400;color:var(--sub);font-size:12px}
-.card:target{outline:3px solid var(--acc-ink);outline-offset:2px}
-.empty{color:var(--sub);font-size:14px;background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:16px}
-footer{margin-top:28px;font-size:12px;color:var(--sub)}
-footer p{margin:4px 0}
-.brand{display:flex;align-items:center;gap:12px;margin:16px 0 0}
-.brand img{width:52px;height:52px;border-radius:50%;flex:none}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",Pretendard,system-ui,"Malgun Gothic","Noto Sans KR",sans-serif;word-break:keep-all;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
+[hidden]{display:none!important}
+.wrap{max-width:480px;margin:0 auto;padding:0 20px}
+.disc{margin:0 -20px;padding:10px 20px;background:var(--band);color:var(--sub);font-size:13px;line-height:1.5}
+.brand{display:flex;align-items:center;gap:10px;margin:18px 0 0}
+.brand img{width:36px;height:36px;border-radius:50%;flex:none}
 .brand p{margin:0}
-.bn{font-weight:700;font-size:16px}
-.bl{font-size:13px;color:var(--sub)}
-.bl a{color:var(--acc-ink);text-decoration:none;font-weight:600}
+.bn{font-weight:700;font-size:15px}
+.bl{font-size:13px;color:var(--mute)}
+.bl a{color:var(--sub);text-decoration:none;font-weight:600}
+h1{margin:26px 0 6px;font-size:26px;line-height:1.35;font-weight:700;letter-spacing:-.02em}
+.lead{margin:0 0 18px;color:var(--sub);font-size:15px}
+.find{margin:0}
+.find label{display:block;margin:0 0 6px;font-size:13px;font-weight:600;color:var(--mute)}
+.find input{display:block;width:100%;height:60px;margin:0;padding:0 18px;border:0;border-radius:16px;background:var(--field);color:var(--ink);font:inherit;font-size:24px;font-weight:700;letter-spacing:.02em;outline:none;-webkit-appearance:none;appearance:none}
+.find input::placeholder{color:var(--mute);font-size:17px;font-weight:600;letter-spacing:0}
+.find input:focus{box-shadow:inset 0 0 0 2px var(--acc)}
+.find input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+.hint{min-height:21px;margin:10px 0 0;font-size:14px;color:var(--sub)}
+.band{height:12px;margin:14px 0 0;background:var(--band)}
+.tabs{display:flex;gap:8px;overflow-x:auto;margin:16px -20px 0;padding:0 20px 2px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;height:36px;padding:0 14px;border:0;border-radius:999px;background:var(--field);color:var(--sub);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.sec{margin:22px 0 2px;font-size:18px;font-weight:700;letter-spacing:-.01em}
+.list{list-style:none;margin:0;padding:0}
+.row summary{display:grid;grid-template-columns:56px minmax(0,1fr) 16px;gap:14px;align-items:center;padding:12px 0;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
+.row summary::-webkit-details-marker{display:none}
+.row summary:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:12px}
+.th{width:56px;height:56px;border-radius:12px;object-fit:cover;background:var(--off);display:block}
+.tx{min-width:0;display:grid;gap:2px}
+.t{font-size:16px;font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.m{font-size:14px;color:var(--mute)}
+.m b{color:var(--ink);font-weight:700}
+.new{display:inline-block;margin-right:6px;padding:0 6px;border-radius:6px;background:var(--tint);color:var(--acc-ink);font-size:11px;font-weight:700;line-height:18px;vertical-align:1px}
+.chev{width:9px;height:9px;margin-top:-4px;justify-self:center;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:rotate(45deg);transition:transform .15s}
+details[open] .chev{margin-top:4px;transform:rotate(-135deg)}
+.more{display:grid;gap:8px;margin:0 0 14px;padding:16px;border-radius:16px;background:var(--band)}
+.prob{margin:0;font-size:15px;line-height:1.55;color:var(--sub)}
+.lim{margin:0;font-size:15px;line-height:1.55}
+.lim b{display:block;margin-bottom:2px;font-size:13px;font-weight:700;color:var(--acc-ink)}
+.note{margin:0;font-size:13px;color:var(--mute)}
+.go{display:flex;align-items:center;justify-content:center;min-height:52px;margin-top:6px;padding:0 16px;border-radius:14px;background:var(--acc);color:var(--on-acc);text-decoration:none;font-weight:700;font-size:16px}
+.go:focus-visible{outline:3px solid var(--acc-ink);outline-offset:2px}
+.go[aria-disabled="true"]{background:var(--off);color:var(--mute);cursor:default}
+.more-btn{display:block;width:100%;height:48px;margin:8px 0 0;border:0;border-radius:14px;background:var(--field);color:var(--sub);font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+.empty{margin:12px 0;padding:16px;border-radius:16px;background:var(--band);color:var(--sub);font-size:14px}
+footer{margin:32px 0 0;padding:18px 0 40px;border-top:1px solid var(--line);font-size:12px;color:var(--mute)}
+footer p{margin:4px 0}
+@media (prefers-reduced-motion: reduce){.chev{transition:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
 <p class="disc" role="note">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
-<header class="brand"><img src="brand/icon-192.png" alt="" width="52" height="52"><div><p class="bn">좁은주방 살림픽</p><p class="bl"><a href="https://www.instagram.com/jubang.salimpick/" rel="noopener">인스타</a> · <a href="https://www.youtube.com/@jubang.salimpick/shorts" rel="noopener">유튜브</a></p></div></header>
-<h1>영상 속 제품</h1>
-<p class="lead">영상 끝에 나온 번호를 찾아 보세요. 사기 전에 '확인할 점'을 꼭 읽어 주세요.</p>
-<p class="asof">링크·조건 점검 기준일 2026-10-14 · 가격과 재고는 판매처 페이지가 최신이에요.</p>
-<nav class="jump" aria-label="영상 번호로 바로 가기"><a href="#n49">가전템 #1</a><a href="#n48">살림템 #16</a><a href="#n47">수납템 #4</a><a href="#n46">청소템 #6</a><a href="#n45">살림템 #14</a><a href="#n44">생활템 #5</a><a href="#n43">반려템 #17</a><a href="#n42">인테리어템 #5</a><a href="#n41">반려템 #16</a><a href="#n40">살림템 #12</a><a href="#n39">반려템 #18</a><a href="#n38">반려템 #12</a><a href="#n37">선물템 #1</a><a href="#n36">살림템 #5</a><a href="#n35">반려템 #9</a><a href="#n34">살림템 #10</a><a href="#n33">반려템 #15</a><a href="#n32">생활템 #4</a><a href="#n31">반려템 #7</a><a href="#n30">살림템 #6</a><a href="#n29">살림템 #9</a><a href="#n28">인테리어템 #3</a><a href="#n27">반려템 #14</a><a href="#n26">반려템 #13</a><a href="#n25">반려템 #10</a><a href="#n24">반려템 #11</a><a href="#n23">살림템 #4</a><a href="#n22">반려템 #6</a><a href="#n21">반려템 #5</a><a href="#n20">청소템 #5</a><a href="#n19">살림템 #3</a><a href="#n18">청소템 #2</a><a href="#n17">반려템 #4</a><a href="#n16">살림템 #2</a><a href="#n15">청소템 #4</a><a href="#n14">청소템 #3</a><a href="#n13">생활템 #3</a><a href="#n12">생활템 #2</a><a href="#n11">생활템 #1</a><a href="#n10">살림템 #1</a><a href="#n9">수납템 #3</a><a href="#n8">청소템 #1</a><a href="#n7">반려템 #3</a><a href="#n6">반려템 #2</a><a href="#n4">반려템 #1</a></nav>
-<main class="list">
-  <article class="card new" id="n49">
-    <img class="th" src="img/T-20261014-06.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">가전템 비교 #1</span><span class="new-b">최신 영상</span>
-      <h2>겨울밤 방이 건조해 가습기를 켜 두고 싶은데, 흔한 가습기는 밋밋하고 분위기 조명을 따로 켜야 한다.</h2>
-      <p class="pr">33,210원 <span>(10.14 기준 · 지금 가격은 판매처에서)</span></p>
-      
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hPY9FMWnkG" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n48">
-    <img class="th" src="img/T-20261014-03.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">살림템 비교 #16</span>
-      <h2>싱크대 위에 씻은 식기와 채소를 둘 자리가 없어 조리대가 물바다가 된다</h2>
-      <p class="pr">7,000원 <span>(10.14 기준 · 지금 가격은 판매처에서)</span></p>
-      
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hPW2E25vnU" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n47">
-    <span class="th" aria-hidden="true"></span>
-    <div class="tx">
-      <span class="no">수납템 비교 #4</span>
-      <h2>신발장 칸마다 신발이 한 켤레씩만 들어가 금방 꽉 차고 남는 신발은 현관 바닥에 쌓인다</h2>
-      <p class="pr">6,355원 <span>(10.14 기준 · 지금 가격은 판매처에서)</span></p>
-      
-      <p class="lim">이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.</p>
-    </div>
-    <a class="go" href="https://toss.shopping/_m/tqYEhaj7" target="_blank" rel="noopener sponsored nofollow">토스에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n46">
-    <span class="th" aria-hidden="true"></span>
-    <div class="tx">
-      <span class="no">청소템 비교 #6</span>
-      <h2>스티커·테이프 자국이 손톱으로 긁어도 안 떨어지고 칼로 긁자니 유리·타일에 흠집이 날까 걱정된다</h2>
-      <p class="pr">5,310원 <span>(10.14 기준 · 지금 가격은 판매처에서)</span></p>
-      
-      <p class="lim">이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.</p>
-    </div>
-    <a class="go" href="https://toss.shopping/_m/pPST5J5B" target="_blank" rel="noopener sponsored nofollow">토스에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n45">
-    <span class="th" aria-hidden="true"></span>
-    <div class="tx">
-      <span class="no">살림템 비교 #14</span>
-      <h2>여행이나 출장에서 빨래를 널 곳이 없어 욕실 문고리나 의자에 걸쳐 말리다 떨어지거나 구겨진다</h2>
-      <p class="pr">1,840원 <span>(10.14 기준 · 지금 가격은 판매처에서)</span></p>
-      
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hPC86HJD5g" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n44">
-    <span class="th" aria-hidden="true"></span>
-    <div class="tx">
-      <span class="no">생활템 비교 #5</span>
-      <h2>빨래를 매번 반듯하게 개기 어렵고 서랍에 넣으면 옷이 흐트러져 자리를 많이 차지한다</h2>
-      <p class="pr">5,900원 <span>(10.14 기준 · 지금 가격은 판매처에서)</span></p>
-      
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hPCagMOsr6" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n43">
-    <span class="th" aria-hidden="true"></span>
-    <div class="tx">
-      <span class="no">반려템 비교 #17</span>
-      <h2>고양이가 소파와 식탁 위로 뛰어 올라가 쉴 높은 자리가 없고 창가 자리도 좁다</h2>
-      <p class="pr">12,900원 <span>(10.14 기준 · 지금 가격은 판매처에서)</span></p>
-      
-      <p class="lim">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p>
-    </div>
-    <a class="go" href="https://naver.me/GArkNfGY" target="_blank" rel="noopener sponsored nofollow">네이버에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n42">
-    <span class="th" aria-hidden="true"></span>
-    <div class="tx">
-      <span class="no">인테리어템 비교 #5</span>
-      <h2>무거운 화분을 옮기려면 들어 올려야 해서 허리가 아프고 바닥에 끌면 자국이 남는다</h2>
-      <p class="pr">17,900원 <span>(10.14 기준 · 지금 가격은 판매처에서)</span></p>
-      
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hPw6BvGo7o" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n41">
-    <span class="th" aria-hidden="true"></span>
-    <div class="tx">
-      <span class="no">반려템 비교 #16</span>
-      <h2>외출할 때 강아지 밥그릇과 물그릇이 부피가 커서 가방에 넣기 어렵고 물 줄 곳이 없다</h2>
-      <p class="pr">3,370원 <span>(10.14 기준 · 지금 가격은 판매처에서)</span></p>
-      
-      <p class="lim">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p>
-    </div>
-    <a class="go" href="https://naver.me/x1usXRXc" target="_blank" rel="noopener sponsored nofollow">네이버에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n40">
-    <span class="th" aria-hidden="true"></span>
-    <div class="tx">
-      <span class="no">살림템 비교 #12</span>
-      <h2>고기·간식을 개봉 후 공기에 노출시켜 금방 상해 남은 양을 버리게 된다</h2>
-      <p class="pr">11,520원 <span>(10.14 기준 · 지금 가격은 판매처에서)</span></p>
-      
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hPujhNboiq" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n39">
-    <span class="th" aria-hidden="true"></span>
-    <div class="tx">
-      <span class="no">반려템 비교 #18</span>
-      <h2>집을 비운 낮에 고양이가 혼자 놀 거리가 없어 가구를 긁고 울어댄다</h2>
-      <p class="pr">7,200원 <span>(10.13 기준 · 지금 가격은 판매처에서)</span></p>
-      
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hOi7tEHX52" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n38">
-    <img class="th" src="img/T-20261012-47.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #12</span>
-      <h2>외출할 때 강아지 밥그릇과 물그릇이 부피가 커서 가방에 넣기 어렵고 물 줄 곳이 없다</h2>
-      <p class="pr">3,370원 <span>(10.13 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 다만 한 개입이라 밥이랑 물을 나란히 놓으려면 두 개가 편해요.</p>
-      <p class="lim">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p>
-    </div>
-    <a class="go" href="https://naver.me/x1usXRXc" target="_blank" rel="noopener sponsored nofollow">네이버에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n37">
-    <img class="th" src="img/T-20261012-71.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">선물템 비교 #1</span>
-      <h2>생일·파티 풍선을 입으로 불거나 수동 펌프로 부풀리느라 손과 숨이 많이 든다</h2>
-      <p class="pr">59,890원 <span>(10.13 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 한쪽은 누르는 동안만 부풀어서 크기는 손으로 맞춰요.</p>
-      <p class="lim">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p>
-    </div>
-    <a class="go" href="https://naver.me/xeFPvjFU" target="_blank" rel="noopener sponsored nofollow">네이버에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n36">
-    <img class="th" src="img/T-20261012-54.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">살림템 비교 #5</span>
-      <h2>노트북 화면이 낮아 목이 아프지만 받침대는 부피가 커서 가방에 넣기 어렵다</h2>
-      <p class="pr">12,900원 <span>(10.13 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 접으면 휴대폰 받침도 돼요.</p>
-      <p class="lim">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p>
-    </div>
-    <a class="go" href="https://naver.me/GuCcrinc" target="_blank" rel="noopener sponsored nofollow">네이버에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n35">
-    <img class="th" src="img/T-20261012-17.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #9</span>
-      <h2>고양이가 모래를 뒷발로 차서 화장실 밖으로 흩어져 바닥을 매일 쓸어야 한다</h2>
-      <p class="pr">12,000원 <span>(10.13 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 선반 밑만 피하면 충분해요.</p>
-      <p class="lim">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p>
-    </div>
-    <a class="go" href="https://naver.me/FAAltYo1" target="_blank" rel="noopener sponsored nofollow">네이버에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n34">
-    <img class="th" src="img/T-20261013-41.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">살림템 비교 #10</span>
-      <h2>여행이나 출장에서 빨래를 널 곳이 없어 욕실 문고리나 의자에 걸쳐 말리다 떨어지거나 구겨진다</h2>
-      <p class="pr">1,840원 <span>(10.13 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 옷걸이 다섯 개쯤 널 때 딱 맞아요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hNY1aYyVBA" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n33">
-    <img class="th" src="img/T-20261013-43.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #15</span>
-      <h2>집을 비운 낮에 고양이가 혼자 놀 거리가 없어 가구를 긁고 울어댄다</h2>
-      <p class="pr">7,200원 <span>(10.13 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 쫓는지만 확인하면 돼요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hNXGylxX40" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n32">
-    <img class="th" src="img/T-20261012-23.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">생활템 비교 #4</span>
-      <h2>여행 짐을 가방에 넣으면 옷과 소품이 뒤엉켜 필요한 것을 찾기 어렵고 부피도 줄지 않는다</h2>
-      <p class="pr">16,050원 <span>(10.13 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 제일 큰 게 40센티라 캐리어 안쪽 길이만 재 보세요.</p>
-      <p class="lim">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p>
-    </div>
-    <a class="go" href="https://naver.me/GQGZmIwp" target="_blank" rel="noopener sponsored nofollow">네이버에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n31">
-    <img class="th" src="img/T-20261012-12.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #7</span>
-      <h2>고양이 물그릇 물이 금방 탁해져 자주 갈아야 하고 필터 관리도 번거롭다</h2>
-      <p class="pr">8,990원 <span>(10.13 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 고인 물 대신, 물통 1200ml가 필터를 거쳐 돌아요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hMoPAWwGUm" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n30">
-    <img class="th" src="img/T-20261012-103.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">살림템 비교 #6</span>
-      <h2>셔츠와 티셔츠를 손으로 개면 모양이 흐트러져 서랍에 가지런히 넣기 번거롭다</h2>
-      <p class="pr">6,500원 <span>(10.13 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 다만 색상 옵션만 확인하면 돼요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hNSd0IImE8" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n29">
-    <img class="th" src="img/T-20261013-01.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">살림템 비교 #9</span>
-      <h2>조리 중 벽에 튄 기름이 눌어붙어 닦아도 누런 얼룩이 남는다</h2>
-      <p class="pr">11,990원 <span>(10.13 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 다만 롤 폭이 정해져 있으니 붙일 벽 높이만 재 두세요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hNPDR2KbbE" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n28">
-    <img class="th" src="img/T-20261012-130.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">인테리어템 비교 #3</span>
-      <h2>무거운 화분을 옮기려면 들어 올려야 해서 허리가 아프고 바닥에 끌면 자국이 남는다</h2>
-      <p class="pr">17,900원 <span>(10.13 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 다만 물이 나무 틈으로 빠지니까 화분 접시만 받쳐 두면 돼요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hNM0Ver2MC" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n27">
-    <img class="th" src="img/T-20261012-111.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #14</span>
-      <h2>산책 후 젖은 흙이 묻은 강아지 발을 수건으로 닦아도 발가락 사이가 더러워 현관 바닥이 지저분하다</h2>
-      <p class="pr">18,720원 <span>(10.13 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> USB만 꽂으면 돼요.</p>
-      <p class="lim">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p>
-    </div>
-    <a class="go" href="https://naver.me/5Olwbap8" target="_blank" rel="noopener sponsored nofollow">네이버에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n26">
-    <img class="th" src="img/T-20261012-52.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #13</span>
-      <h2>고양이가 소파와 식탁 위로 뛰어 올라가 쉴 높은 자리가 없고 창가 자리도 좁다</h2>
-      <p class="pr">12,900원 <span>(10.12 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 좁은 거실엔 창가에 판 하나 거는 방법도 있어요.</p>
-      <p class="lim">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p>
-    </div>
-    <a class="go" href="https://naver.me/GArkNfGY" target="_blank" rel="noopener sponsored nofollow">네이버에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n25">
-    <img class="th" src="img/T-20261012-27.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #10</span>
-      <h2>고양이 사료와 물이 식기 밖으로 흩어져 바닥이 매번 지저분하고 닦기 번거롭다</h2>
-      <p class="pr">11,000원 <span>(10.12 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> S사이즈라 그릇 폭만 재 보세요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hM6RQRBjwW" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n24">
-    <img class="th" src="img/T-20261012-44.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #11</span>
-      <h2>고양이가 소파 모서리를 긁어 천이 올이 나가고 찢어져 보기 흉해진다</h2>
-      <p class="pr">4,310원 <span>(10.12 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 크기가 100에 30이라 팔걸이 둘레를 먼저 재 두면 편해요.</p>
-      <p class="lim">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p>
-    </div>
-    <a class="go" href="https://naver.me/xRgDCRIx" target="_blank" rel="noopener sponsored nofollow">네이버에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n23">
-    <img class="th" src="img/T-20261012-10.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">살림템 비교 #4</span>
-      <h2>고기·간식을 개봉 후 공기에 노출시켜 금방 상해 남은 양을 버리게 된다</h2>
-      <p class="pr">11,520원 <span>(10.12 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 셋, 밸브 봉지 10장이 같이 오니 한 끼씩 나눠 담으면 끝.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hMkRy375lA" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n22">
-    <img class="th" src="img/T-20261012-08.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #6</span>
-      <h2>고양이가 혼자 있을 때 놀아줄 사람이 없어 장난감을 손으로 계속 흔들어야 한다</h2>
-      <p class="pr">18,200원 <span>(10.12 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 깃털 물고 늘어지는 냥이라면, 옆에 있을 때 켜 두면 돼요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hMhn1gS6ea" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n21">
-    <img class="th" src="img/T-20261012-01.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #5</span>
-      <h2>고양이 장난감이 바구니에 섞여 바닥에 흩어져 원하는 장난감을 찾기 번거롭다</h2>
-      <p class="pr">15,100원 <span>(10.12 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 후크만 따로 고르면 돼요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hMqYojp8ns" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n20">
-    <img class="th" src="img/T-20261010-18.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">청소템 비교 #5</span>
-      <h2>샤워 샴푸병을 욕실 바닥에 두면 물에 젖고, 드릴 없이 달 선반이 마땅치 않다</h2>
-      <p class="pr">6,900원 <span>(10.12 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 셋째, 큰 샴푸병이라면 키부터 재 두면 돼요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hMei6cZvsi" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n19">
-    <img class="th" src="img/T-20261012-02.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">살림템 비교 #3</span>
-      <h2>전자레인지 위 조리대가 좁아 밥솥과 토스터를 올릴 자리가 부족하다</h2>
-      <p class="pr">23,050원 <span>(10.12 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 올려 둬도 문은 열려요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hMhRPwOYTs" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n18">
-    <img class="th" src="img/T-20261009-39.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">청소템 비교 #2</span>
-      <h2>빗과 헤어 브러시에 엉킨 머리카락을 손으로 뜯어내야 해서 매번 청소가 번거롭다</h2>
-      <p class="pr">8,500원 <span>(10.12 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 후기론 씻기 편하대요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hMdf4NRQ72" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n17">
-    <img class="th" src="img/T-20261010-17.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #4</span>
-      <h2>고양이 털이 소파와 옷에 붙어 테이프로 떼도 잘 안 떨어진다</h2>
-      <p class="pr">5,860원 <span>(10.10 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 23×16cm라서, 손 길이만 대 보면 돼요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hJAX9eW8Wq" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n16">
-    <img class="th" src="img/T-20261009-45.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">살림템 비교 #2</span>
-      <h2>가스레인지 뒤 벽에 기름이 튀어 닦아도 누렇게 얼룩이 남는다</h2>
-      <p class="pr">4,900원 <span>(10.10 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 10m 롤이라 벽 가로·세로만 재 두면 돼요.</p>
-      <p class="lim">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p>
-    </div>
-    <a class="go" href="https://naver.me/F6Q0ZBx5" target="_blank" rel="noopener sponsored nofollow">네이버에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n15">
-    <img class="th" src="img/T-20261010-12.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">청소템 비교 #4</span>
-      <h2>치약·폼클렌저 튜브가 세면대 위에 눕혀져 굴러다니고 끝까지 짜기도 번거롭다</h2>
-      <p class="pr">7,700원 <span>(10.10 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 붙일 벽이 타일인지 먼저 봐 두면 편해요.</p>
-      <p class="lim">이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.</p>
-    </div>
-    <a class="go" href="https://toss.shopping/_m/XoNBza76" target="_blank" rel="noopener sponsored nofollow">토스에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n14">
-    <img class="th" src="img/T-20261010-03.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">청소템 비교 #3</span>
-      <h2>스티커·테이프 자국이 손톱으로 긁어도 안 떨어지고 칼로 긁자니 유리·타일에 흠집이 날까 걱정된다</h2>
-      <p class="pr">5,310원 <span>(10.10 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 닳은 날은 리필 10개로 갈아 끼워요.</p>
-      <p class="lim">이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.</p>
-    </div>
-    <a class="go" href="https://toss.shopping/_m/pPST5J5B" target="_blank" rel="noopener sponsored nofollow">토스에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n13">
-    <img class="th" src="img/T-20261010-07.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">생활템 비교 #3</span>
-      <h2>베란다 빨래 건조대를 안 쓸 때도 접어 두지 못해 벽 쪽 자리를 계속 차지한다</h2>
-      <p class="pr">56,000원 <span>(10.10 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 붙일 창가 유리만 먼저 골라 두면 돼요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hIwj3dff3Y" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n12">
-    <img class="th" src="img/T-20261009-42.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">생활템 비교 #2</span>
-      <h2>빨래를 매번 반듯하게 개기 어렵고 서랍에 넣으면 옷이 흐트러져 자리를 많이 차지한다</h2>
-      <p class="pr">5,900원 <span>(10.09 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 큰 셔츠가 많은 집이라면 판 크기만 확인해 보세요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hHY14gUlgW" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n11">
-    <img class="th" src="img/T-20261009-44.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">생활템 비교 #1</span>
-      <h2>속옷과 양말을 큰 세탁기에 다른 빨래와 같이 돌리기 찜찜하고 손빨래는 번거롭다</h2>
-      <p class="pr">59,000원 <span>(10.09 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 소형이라 자주 빠는 집에 맞아요.</p>
-      <p class="lim">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p>
-    </div>
-    <a class="go" href="https://naver.me/IGsYNELP" target="_blank" rel="noopener sponsored nofollow">네이버에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n10">
-    <img class="th" src="img/T-20261009-01.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">살림템 비교 #1</span>
-      <h2>개봉한 식품 봉지를 집게로 물려도 공기가 차서 눅눅해지고 자꾸 풀린다</h2>
-      <p class="pr">10,100원 <span>(10.09 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 중형은 26×28cm, 쌀이라면 대형이요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hHRjr3Bm8q" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n9">
-    <img class="th" src="img/T-20261009-41.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">수납템 비교 #3</span>
-      <h2>신발장 칸마다 신발이 한 켤레씩만 들어가 금방 꽉 차고 남는 신발은 현관 바닥에 쌓인다</h2>
-      <p class="pr">6,355원 <span>(10.09 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 칸 높이만 재 두면 맞추기 편해요.</p>
-      <p class="lim">이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.</p>
-    </div>
-    <a class="go" href="https://toss.shopping/_m/tqYEhaj7" target="_blank" rel="noopener sponsored nofollow">토스에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n8">
-    <img class="th" src="img/T-20261008-11.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">청소템 비교 #1</span>
-      <h2>창틀 레일 틈새 먼지와 때가 걸레로는 닦이지 않는다</h2>
-      <p class="pr">5,900원 <span>(10.09 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 창문 많은 집이라면 10개 돌려 쓰고 털어 말려요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hG6PhLIEqi" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n7">
-    <img class="th" src="img/T-20261008-07.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #3</span>
-      <h2>산책 후 강아지 발의 흙과 오물을 닦아도 집 바닥에 발자국이 남는다</h2>
-      <p class="pr">10,800원 <span>(10.08 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 리뷰에선 뒤집어서 목욕 솔로도 쓴대요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hFTNbwx2EC" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n6">
-    <img class="th" src="img/T-20261008-04.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #2</span>
-      <h2>고양이 화장실 밖으로 모래가 튀어 바닥에 흩어져 매일 쓸어야 한다</h2>
-      <p class="pr">8,750원 <span>(10.08 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 빗자루 대신, 밟으면 구멍으로 쏙.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hFLdv3O4rY" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
-  <article class="card" id="n4">
-    <img class="th" src="img/T-20261008-01.jpg" alt="" width="72" height="72" loading="lazy">
-    <div class="tx">
-      <span class="no">반려템 비교 #1</span>
-      <h2>소파와 이불에 붙은 반려동물 털이 손으로 잘 안 떨어져 매일 치워도 남는다</h2>
-      <p class="pr">6,150원 <span>(10.08 기준 · 지금 가격은 판매처에서)</span></p>
-      <p class="lim"><b>확인할 점</b> 가죽 소파엔 테이프가 낫다는 리뷰, 천인지 확인해 보세요.</p>
-    </div>
-    <a class="go" href="https://link.coupang.com/a/hFACFZl7T2" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 최신 가격·조건 보기</a>
-  </article>
+<header class="brand"><img src="brand/icon-192.png" alt="" width="36" height="36"><div><p class="bn">좁은주방 살림픽</p><p class="bl"><a href="https://www.instagram.com/jubang.salimpick/" rel="noopener">인스타</a> · <a href="https://www.youtube.com/@jubang.salimpick/shorts" rel="noopener">유튜브</a></p></div></header>
+<h1>영상 속 제품 찾기</h1>
+<p class="lead">영상 끝에 나온 번호를 넣어 보세요.</p>
+<form class="find" id="find" role="search" hidden>
+<label for="q">영상 번호</label>
+<input id="q" type="search" inputmode="numeric" autocomplete="off" enterkeyhint="search" placeholder="예: 103">
+</form>
+<p class="hint" id="hint" aria-live="polite"></p>
+</div>
+<div class="band" aria-hidden="true"></div>
+<div class="wrap">
+<nav class="tabs" aria-label="시리즈" hidden><button type="button" data-s="" aria-pressed="true">전체</button><button type="button" data-s="반려템" aria-pressed="false">반려템</button><button type="button" data-s="살림템" aria-pressed="false">살림템</button><button type="button" data-s="청소템" aria-pressed="false">청소템</button><button type="button" data-s="생활템" aria-pressed="false">생활템</button><button type="button" data-s="수납템" aria-pressed="false">수납템</button><button type="button" data-s="인테리어템" aria-pressed="false">인테리어템</button><button type="button" data-s="가전템" aria-pressed="false">가전템</button><button type="button" data-s="선물템" aria-pressed="false">선물템</button></nav>
+<h2 class="sec" id="sec">최근 올린 영상</h2>
+<main>
+<ul class="list" id="list">
+<li class="row" id="n49" data-no="1" data-s="가전템" data-q="불 피운 듯 일렁이는 벽난로 미니 가습기 겨울밤 방이 건조해 가습기를 켜 두고 싶은데, 흔한 가습기는 밋밋하고 분위기 조명을 따로 켜야 한다. 가전템 비교 #1 소형가전"><details><summary><img class="th" src="img/T-20261014-06.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">불 피운 듯 일렁이는 벽난로 미니 가습기</span><span class="m"><span class="new">NEW</span><b>33,210원</b> · 가전템 #1</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">겨울밤 방이 건조해 가습기를 켜 두고 싶은데, 흔한 가습기는 밋밋하고 분위기 조명을 따로 켜야 한다.</p><p class="note">10.14 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hPY9FMWnkG" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n48" data-no="16" data-s="살림템" data-q="싱크대 위에 펼치는 실리콘 싱크롤 선반 싱크대 위에 씻은 식기와 채소를 둘 자리가 없어 조리대가 물바다가 된다 살림템 비교 #16 주방"><details><summary><img class="th" src="img/T-20261014-03.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">싱크대 위에 펼치는 실리콘 싱크롤 선반</span><span class="m"><b>7,000원</b> · 살림템 #16</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">싱크대 위에 씻은 식기와 채소를 둘 자리가 없어 조리대가 물바다가 된다</p><p class="note">10.14 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hPW2E25vnU" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n47" data-no="4" data-s="수납템" data-q="한 칸에 두 켤레 들어가는 신발장 슈즈렉 신발장 칸마다 신발이 한 켤레씩만 들어가 금방 꽉 차고 남는 신발은 현관 바닥에 쌓인다 수납템 비교 #4 수납"><details><summary><img class="th" src="img/T-20261013-72.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">한 칸에 두 켤레 들어가는 신발장 슈즈렉</span><span class="m"><b>6,355원</b> · 수납템 #4</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">신발장 칸마다 신발이 한 켤레씩만 들어가 금방 꽉 차고 남는 신발은 현관 바닥에 쌓인다</p><p class="note">10.14 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.</p><a class="go" href="https://toss.shopping/_m/tqYEhaj7" target="_blank" rel="noopener sponsored nofollow">토스에서 보기</a></div></details></li>
+<li class="row" id="n46" data-no="6" data-s="청소템" data-q="붙은 스티커 자국 어떻게 떼나 청소 스크래퍼 스티커·테이프 자국이 손톱으로 긁어도 안 떨어지고 칼로 긁자니 유리·타일에 흠집이 날까 걱정된다 청소템 비교 #6 청소·욕실"><details><summary><img class="th" src="img/T-20261013-71.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">붙은 스티커 자국 어떻게 떼나 청소 스크래퍼</span><span class="m"><b>5,310원</b> · 청소템 #6</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">스티커·테이프 자국이 손톱으로 긁어도 안 떨어지고 칼로 긁자니 유리·타일에 흠집이 날까 걱정된다</p><p class="note">10.14 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.</p><a class="go" href="https://toss.shopping/_m/pPST5J5B" target="_blank" rel="noopener sponsored nofollow">토스에서 보기</a></div></details></li>
+<li class="row" id="n45" data-no="14" data-s="살림템" data-q="여행 가서 빨래 널 때 휴대용 접이 건조대 여행이나 출장에서 빨래를 널 곳이 없어 욕실 문고리나 의자에 걸쳐 말리다 떨어지거나 구겨진다 살림템 비교 #14 세탁"><details><summary><img class="th" src="img/T-20261013-70.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">여행 가서 빨래 널 때 휴대용 접이 건조대</span><span class="m"><b>1,840원</b> · 살림템 #14</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">여행이나 출장에서 빨래를 널 곳이 없어 욕실 문고리나 의자에 걸쳐 말리다 떨어지거나 구겨진다</p><p class="note">10.14 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hPC86HJD5g" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n44" data-no="5" data-s="생활템" data-q="손으로 접던 옷이 같은 크기로 접혀요 빨래를 매번 반듯하게 개기 어렵고 서랍에 넣으면 옷이 흐트러져 자리를 많이 차지한다 생활템 비교 #5 생활"><details><summary><img class="th" src="img/T-20261013-69.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">손으로 접던 옷이 같은 크기로 접혀요</span><span class="m"><b>5,900원</b> · 생활템 #5</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">빨래를 매번 반듯하게 개기 어렵고 서랍에 넣으면 옷이 흐트러져 자리를 많이 차지한다</p><p class="note">10.14 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hPCagMOsr6" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n43" data-no="17" data-s="반려템" data-q="창가 자리 하나로 끝나는 고양이 창문 해먹 고양이가 소파와 식탁 위로 뛰어 올라가 쉴 높은 자리가 없고 창가 자리도 좁다 반려템 비교 #17 반려동물"><details><summary><img class="th" src="img/T-20261013-68.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">창가 자리 하나로 끝나는 고양이 창문 해먹</span><span class="m"><b>12,900원</b> · 반려템 #17</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">고양이가 소파와 식탁 위로 뛰어 올라가 쉴 높은 자리가 없고 창가 자리도 좁다</p><p class="note">10.14 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p><a class="go" href="https://naver.me/GArkNfGY" target="_blank" rel="noopener sponsored nofollow">네이버에서 보기</a></div></details></li>
+<li class="row" id="n42" data-no="5" data-s="인테리어템" data-q="들지 않고 밀어서 옮기는 바퀴 달린 화분 받침 무거운 화분을 옮기려면 들어 올려야 해서 허리가 아프고 바닥에 끌면 자국이 남는다 인테리어템 비교 #5 플랜테리어"><details><summary><img class="th" src="img/T-20261013-66.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">들지 않고 밀어서 옮기는 바퀴 달린 화분 받침</span><span class="m"><b>17,900원</b> · 인테리어템 #5</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">무거운 화분을 옮기려면 들어 올려야 해서 허리가 아프고 바닥에 끌면 자국이 남는다</p><p class="note">10.14 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hPw6BvGo7o" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n41" data-no="16" data-s="반려템" data-q="산책길 물그릇 어떻게 챙겨요? 접이식 실리콘 물그릇 외출할 때 강아지 밥그릇과 물그릇이 부피가 커서 가방에 넣기 어렵고 물 줄 곳이 없다 반려템 비교 #16 반려동물"><details><summary><img class="th" src="img/T-20261013-67.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">산책길 물그릇 어떻게 챙겨요? 접이식 실리콘 물그릇</span><span class="m"><b>3,370원</b> · 반려템 #16</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">외출할 때 강아지 밥그릇과 물그릇이 부피가 커서 가방에 넣기 어렵고 물 줄 곳이 없다</p><p class="note">10.14 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p><a class="go" href="https://naver.me/x1usXRXc" target="_blank" rel="noopener sponsored nofollow">네이버에서 보기</a></div></details></li>
+<li class="row" id="n40" data-no="12" data-s="살림템" data-q="대충 싸 두면 공기 남는다면 충전식 미니 진공 펌프 고기·간식을 개봉 후 공기에 노출시켜 금방 상해 남은 양을 버리게 된다 살림템 비교 #12 주방"><details><summary><img class="th" src="img/T-20261013-64.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">대충 싸 두면 공기 남는다면 충전식 미니 진공 펌프</span><span class="m"><b>11,520원</b> · 살림템 #12</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">고기·간식을 개봉 후 공기에 노출시켜 금방 상해 남은 양을 버리게 된다</p><p class="note">10.14 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hPujhNboiq" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n39" data-no="18" data-s="반려템" data-q="한 번 누르면 혼자 굴러가는 고양이 자동 공 집을 비운 낮에 고양이가 혼자 놀 거리가 없어 가구를 긁고 울어댄다 반려템 비교 #18 반려동물"><details><summary><img class="th" src="img/T-20261013-73.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">한 번 누르면 혼자 굴러가는 고양이 자동 공</span><span class="m"><b>7,200원</b> · 반려템 #18</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">집을 비운 낮에 고양이가 혼자 놀 거리가 없어 가구를 긁고 울어댄다</p><p class="note">10.13 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hOi7tEHX52" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n38" data-no="12" data-s="반려템" data-q="산책길 물 주기, 접어서 가방에 거는 그릇 외출할 때 강아지 밥그릇과 물그릇이 부피가 커서 가방에 넣기 어렵고 물 줄 곳이 없다 반려템 비교 #12 반려동물"><details><summary><img class="th" src="img/T-20261012-47.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">산책길 물 주기, 접어서 가방에 거는 그릇</span><span class="m"><b>3,370원</b> · 반려템 #12</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">외출할 때 강아지 밥그릇과 물그릇이 부피가 커서 가방에 넣기 어렵고 물 줄 곳이 없다</p><p class="lim"><b>확인할 점</b>다만 한 개입이라 밥이랑 물을 나란히 놓으려면 두 개가 편해요.</p><p class="note">10.13 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p><a class="go" href="https://naver.me/x1usXRXc" target="_blank" rel="noopener sponsored nofollow">네이버에서 보기</a></div></details></li>
+<li class="row" id="n37" data-no="1" data-s="선물템" data-q="숨차는 생일 풍선, 노즐 두 개 전동 펌프 생일·파티 풍선을 입으로 불거나 수동 펌프로 부풀리느라 손과 숨이 많이 든다 선물템 비교 #1 파티·선물"><details><summary><img class="th" src="img/T-20261012-71.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">숨차는 생일 풍선, 노즐 두 개 전동 펌프</span><span class="m"><b>59,890원</b> · 선물템 #1</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">생일·파티 풍선을 입으로 불거나 수동 펌프로 부풀리느라 손과 숨이 많이 든다</p><p class="lim"><b>확인할 점</b>한쪽은 누르는 동안만 부풀어서 크기는 손으로 맞춰요.</p><p class="note">10.13 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p><a class="go" href="https://naver.me/xeFPvjFU" target="_blank" rel="noopener sponsored nofollow">네이버에서 보기</a></div></details></li>
+<li class="row" id="n36" data-no="5" data-s="살림템" data-q="가방에 넣고 다니는 노트북 받침대 노트북 화면이 낮아 목이 아프지만 받침대는 부피가 커서 가방에 넣기 어렵다 살림템 비교 #5 문구"><details><summary><img class="th" src="img/T-20261012-54.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">가방에 넣고 다니는 노트북 받침대</span><span class="m"><b>12,900원</b> · 살림템 #5</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">노트북 화면이 낮아 목이 아프지만 받침대는 부피가 커서 가방에 넣기 어렵다</p><p class="lim"><b>확인할 점</b>접으면 휴대폰 받침도 돼요.</p><p class="note">10.13 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p><a class="go" href="https://naver.me/GuCcrinc" target="_blank" rel="noopener sponsored nofollow">네이버에서 보기</a></div></details></li>
+<li class="row" id="n35" data-no="9" data-s="반려템" data-q="매일 쓸던 바닥 모래, 위로 나오는 후드 화장실 고양이가 모래를 뒷발로 차서 화장실 밖으로 흩어져 바닥을 매일 쓸어야 한다 반려템 비교 #9 반려동물"><details><summary><img class="th" src="img/T-20261012-17.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">매일 쓸던 바닥 모래, 위로 나오는 후드 화장실</span><span class="m"><b>12,000원</b> · 반려템 #9</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">고양이가 모래를 뒷발로 차서 화장실 밖으로 흩어져 바닥을 매일 쓸어야 한다</p><p class="lim"><b>확인할 점</b>선반 밑만 피하면 충분해요.</p><p class="note">10.13 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p><a class="go" href="https://naver.me/FAAltYo1" target="_blank" rel="noopener sponsored nofollow">네이버에서 보기</a></div></details></li>
+<li class="row" id="n34" data-no="10" data-s="살림템" data-q="호텔 빨래 널 곳 없을 때, 여행용 접이 걸이 여행이나 출장에서 빨래를 널 곳이 없어 욕실 문고리나 의자에 걸쳐 말리다 떨어지거나 구겨진다 살림템 비교 #10 세탁"><details><summary><img class="th" src="img/T-20261013-41.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">호텔 빨래 널 곳 없을 때, 여행용 접이 걸이</span><span class="m"><b>1,840원</b> · 살림템 #10</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">여행이나 출장에서 빨래를 널 곳이 없어 욕실 문고리나 의자에 걸쳐 말리다 떨어지거나 구겨진다</p><p class="lim"><b>확인할 점</b>옷걸이 다섯 개쯤 널 때 딱 맞아요.</p><p class="note">10.13 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hNY1aYyVBA" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n33" data-no="15" data-s="반려템" data-q="혼자 있는 낮, 굴러가는 볼 장난감 집을 비운 낮에 고양이가 혼자 놀 거리가 없어 가구를 긁고 울어댄다 반려템 비교 #15 반려동물"><details><summary><img class="th" src="img/T-20261013-43.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">혼자 있는 낮, 굴러가는 볼 장난감</span><span class="m"><b>7,200원</b> · 반려템 #15</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">집을 비운 낮에 고양이가 혼자 놀 거리가 없어 가구를 긁고 울어댄다</p><p class="lim"><b>확인할 점</b>쫓는지만 확인하면 돼요.</p><p class="note">10.13 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hNXGylxX40" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n32" data-no="4" data-s="생활템" data-q="꾹 눌러 닫던 캐리어, 지퍼 한 줄로 두께 줄이기 여행 짐을 가방에 넣으면 옷과 소품이 뒤엉켜 필요한 것을 찾기 어렵고 부피도 줄지 않는다 생활템 비교 #4 생활"><details><summary><img class="th" src="img/T-20261012-23.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">꾹 눌러 닫던 캐리어, 지퍼 한 줄로 두께 줄이기</span><span class="m"><b>16,050원</b> · 생활템 #4</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">여행 짐을 가방에 넣으면 옷과 소품이 뒤엉켜 필요한 것을 찾기 어렵고 부피도 줄지 않는다</p><p class="lim"><b>확인할 점</b>제일 큰 게 40센티라 캐리어 안쪽 길이만 재 보세요.</p><p class="note">10.13 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p><a class="go" href="https://naver.me/GQGZmIwp" target="_blank" rel="noopener sponsored nofollow">네이버에서 보기</a></div></details></li>
+<li class="row" id="n31" data-no="7" data-s="반려템" data-q="고인 물그릇 대신, 물이 도는 꽃 분수 고양이 물그릇 물이 금방 탁해져 자주 갈아야 하고 필터 관리도 번거롭다 반려템 비교 #7 반려동물"><details><summary><img class="th" src="img/T-20261012-12.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">고인 물그릇 대신, 물이 도는 꽃 분수</span><span class="m"><b>8,990원</b> · 반려템 #7</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">고양이 물그릇 물이 금방 탁해져 자주 갈아야 하고 필터 관리도 번거롭다</p><p class="lim"><b>확인할 점</b>고인 물 대신, 물통 1200ml가 필터를 거쳐 돌아요.</p><p class="note">10.13 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hMoPAWwGUm" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n30" data-no="6" data-s="살림템" data-q="티셔츠만 삐뚤게 쌓일 때, 칸대로 접는 보드 셔츠와 티셔츠를 손으로 개면 모양이 흐트러져 서랍에 가지런히 넣기 번거롭다 살림템 비교 #6 옷접기"><details><summary><img class="th" src="img/T-20261012-103.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">티셔츠만 삐뚤게 쌓일 때, 칸대로 접는 보드</span><span class="m"><b>6,500원</b> · 살림템 #6</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">셔츠와 티셔츠를 손으로 개면 모양이 흐트러져 서랍에 가지런히 넣기 번거롭다</p><p class="lim"><b>확인할 점</b>다만 색상 옵션만 확인하면 돼요.</p><p class="note">10.13 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hNSd0IImE8" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n29" data-no="9" data-s="살림템" data-q="문질러도 누런 벽, 떼어 내는 투명 한 장 조리 중 벽에 튄 기름이 눌어붙어 닦아도 누런 얼룩이 남는다 살림템 비교 #9 주방"><details><summary><img class="th" src="img/T-20261013-01.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">문질러도 누런 벽, 떼어 내는 투명 한 장</span><span class="m"><b>11,990원</b> · 살림템 #9</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">조리 중 벽에 튄 기름이 눌어붙어 닦아도 누런 얼룩이 남는다</p><p class="lim"><b>확인할 점</b>다만 롤 폭이 정해져 있으니 붙일 벽 높이만 재 두세요.</p><p class="note">10.13 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hNPDR2KbbE" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n28" data-no="3" data-s="인테리어템" data-q="두 손으로 들던 큰 화분, 바퀴 받침대로 밀기 무거운 화분을 옮기려면 들어 올려야 해서 허리가 아프고 바닥에 끌면 자국이 남는다 인테리어템 비교 #3 플랜테리어"><details><summary><img class="th" src="img/T-20261012-130.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">두 손으로 들던 큰 화분, 바퀴 받침대로 밀기</span><span class="m"><b>17,900원</b> · 인테리어템 #3</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">무거운 화분을 옮기려면 들어 올려야 해서 허리가 아프고 바닥에 끌면 자국이 남는다</p><p class="lim"><b>확인할 점</b>다만 물이 나무 틈으로 빠지니까 화분 접시만 받쳐 두면 돼요.</p><p class="note">10.13 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hNM0Ver2MC" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n27" data-no="14" data-s="반려템" data-q="산책 후 발가락 사이 흙, 솔 컵에 넣어 닦기 산책 후 젖은 흙이 묻은 강아지 발을 수건으로 닦아도 발가락 사이가 더러워 현관 바닥이 지저분하다 반려템 비교 #14 반려동물"><details><summary><img class="th" src="img/T-20261012-111.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">산책 후 발가락 사이 흙, 솔 컵에 넣어 닦기</span><span class="m"><b>18,720원</b> · 반려템 #14</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">산책 후 젖은 흙이 묻은 강아지 발을 수건으로 닦아도 발가락 사이가 더러워 현관 바닥이 지저분하다</p><p class="lim"><b>확인할 점</b>USB만 꽂으면 돼요.</p><p class="note">10.13 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p><a class="go" href="https://naver.me/5Olwbap8" target="_blank" rel="noopener sponsored nofollow">네이버에서 보기</a></div></details></li>
+<li class="row" id="n26" data-no="13" data-s="반려템" data-q="좁은 창틀 고양이 자리, 유리창에 붙이는 해먹 고양이가 소파와 식탁 위로 뛰어 올라가 쉴 높은 자리가 없고 창가 자리도 좁다 반려템 비교 #13 반려동물"><details><summary><img class="th" src="img/T-20261012-52.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">좁은 창틀 고양이 자리, 유리창에 붙이는 해먹</span><span class="m"><b>12,900원</b> · 반려템 #13</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">고양이가 소파와 식탁 위로 뛰어 올라가 쉴 높은 자리가 없고 창가 자리도 좁다</p><p class="lim"><b>확인할 점</b>좁은 거실엔 창가에 판 하나 거는 방법도 있어요.</p><p class="note">10.12 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p><a class="go" href="https://naver.me/GArkNfGY" target="_blank" rel="noopener sponsored nofollow">네이버에서 보기</a></div></details></li>
+<li class="row" id="n25" data-no="10" data-s="반려템" data-q="그릇 밖으로 튀는 사료, 턱 있는 매트로 받기 고양이 사료와 물이 식기 밖으로 흩어져 바닥이 매번 지저분하고 닦기 번거롭다 반려템 비교 #10 반려동물"><details><summary><img class="th" src="img/T-20261012-27.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">그릇 밖으로 튀는 사료, 턱 있는 매트로 받기</span><span class="m"><b>11,000원</b> · 반려템 #10</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">고양이 사료와 물이 식기 밖으로 흩어져 바닥이 매번 지저분하고 닦기 번거롭다</p><p class="lim"><b>확인할 점</b>S사이즈라 그릇 폭만 재 보세요.</p><p class="note">10.12 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hM6RQRBjwW" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n24" data-no="11" data-s="반려템" data-q="올 나가는 소파 팔걸이, 긁던 자리에 붙이는 패드 고양이가 소파 모서리를 긁어 천이 올이 나가고 찢어져 보기 흉해진다 반려템 비교 #11 반려동물"><details><summary><img class="th" src="img/T-20261012-44.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">올 나가는 소파 팔걸이, 긁던 자리에 붙이는 패드</span><span class="m"><b>4,310원</b> · 반려템 #11</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">고양이가 소파 모서리를 긁어 천이 올이 나가고 찢어져 보기 흉해진다</p><p class="lim"><b>확인할 점</b>크기가 100에 30이라 팔걸이 둘레를 먼저 재 두면 편해요.</p><p class="note">10.12 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p><a class="go" href="https://naver.me/xRgDCRIx" target="_blank" rel="noopener sponsored nofollow">네이버에서 보기</a></div></details></li>
+<li class="row" id="n23" data-no="4" data-s="살림템" data-q="남은 고기, 랩 대신 공기 빼서 세워 두기 고기·간식을 개봉 후 공기에 노출시켜 금방 상해 남은 양을 버리게 된다 살림템 비교 #4 주방"><details><summary><img class="th" src="img/T-20261012-10.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">남은 고기, 랩 대신 공기 빼서 세워 두기</span><span class="m"><b>11,520원</b> · 살림템 #4</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">고기·간식을 개봉 후 공기에 노출시켜 금방 상해 남은 양을 버리게 된다</p><p class="lim"><b>확인할 점</b>셋, 밸브 봉지 10장이 같이 오니 한 끼씩 나눠 담으면 끝.</p><p class="note">10.12 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hMkRy375lA" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n22" data-no="6" data-s="반려템" data-q="낚싯대 흔들 손이 바쁠 때, 바닥에 두는 깃털 고양이가 혼자 있을 때 놀아줄 사람이 없어 장난감을 손으로 계속 흔들어야 한다 반려템 비교 #6 반려동물"><details><summary><img class="th" src="img/T-20261012-08.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">낚싯대 흔들 손이 바쁠 때, 바닥에 두는 깃털</span><span class="m"><b>18,200원</b> · 반려템 #6</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">고양이가 혼자 있을 때 놀아줄 사람이 없어 장난감을 손으로 계속 흔들어야 한다</p><p class="lim"><b>확인할 점</b>깃털 물고 늘어지는 냥이라면, 옆에 있을 때 켜 두면 돼요.</p><p class="note">10.12 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hMhn1gS6ea" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n21" data-no="5" data-s="반려템" data-q="엉키는 낚싯대 장난감, 바구니 대신 벽에 세우기 고양이 장난감이 바구니에 섞여 바닥에 흩어져 원하는 장난감을 찾기 번거롭다 반려템 비교 #5 반려동물"><details><summary><img class="th" src="img/T-20261012-01.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">엉키는 낚싯대 장난감, 바구니 대신 벽에 세우기</span><span class="m"><b>15,100원</b> · 반려템 #5</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">고양이 장난감이 바구니에 섞여 바닥에 흩어져 원하는 장난감을 찾기 번거롭다</p><p class="lim"><b>확인할 점</b>후크만 따로 고르면 돼요.</p><p class="note">10.12 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hMqYojp8ns" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n20" data-no="5" data-s="청소템" data-q="바닥에 둔 샴푸병, 드릴 없이 벽 선반 샤워 샴푸병을 욕실 바닥에 두면 물에 젖고, 드릴 없이 달 선반이 마땅치 않다 청소템 비교 #5 청소·욕실"><details><summary><img class="th" src="img/T-20261010-18.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">바닥에 둔 샴푸병, 드릴 없이 벽 선반</span><span class="m"><b>6,900원</b> · 청소템 #5</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">샤워 샴푸병을 욕실 바닥에 두면 물에 젖고, 드릴 없이 달 선반이 마땅치 않다</p><p class="lim"><b>확인할 점</b>셋째, 큰 샴푸병이라면 키부터 재 두면 돼요.</p><p class="note">10.12 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hMei6cZvsi" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n19" data-no="3" data-s="살림템" data-q="꽉 찬 조리대, 수납장 대신 전자레인지 위 한 칸 전자레인지 위 조리대가 좁아 밥솥과 토스터를 올릴 자리가 부족하다 살림템 비교 #3 주방"><details><summary><img class="th" src="img/T-20261012-02.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">꽉 찬 조리대, 수납장 대신 전자레인지 위 한 칸</span><span class="m"><b>23,050원</b> · 살림템 #3</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">전자레인지 위 조리대가 좁아 밥솥과 토스터를 올릴 자리가 부족하다</p><p class="lim"><b>확인할 점</b>올려 둬도 문은 열려요.</p><p class="note">10.12 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hMhRPwOYTs" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n18" data-no="2" data-s="청소템" data-q="브러시에 낀 머리카락, 손 대신 갈퀴 빗과 헤어 브러시에 엉킨 머리카락을 손으로 뜯어내야 해서 매번 청소가 번거롭다 청소템 비교 #2 청소·욕실"><details><summary><img class="th" src="img/T-20261009-39.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">브러시에 낀 머리카락, 손 대신 갈퀴</span><span class="m"><b>8,500원</b> · 청소템 #2</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">빗과 헤어 브러시에 엉킨 머리카락을 손으로 뜯어내야 해서 매번 청소가 번거롭다</p><p class="lim"><b>확인할 점</b>후기론 씻기 편하대요.</p><p class="note">10.12 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hMdf4NRQ72" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n17" data-no="4" data-s="반려템" data-q="털갈이 고양이, 빗 대신 장갑으로 쓸기 고양이 털이 소파와 옷에 붙어 테이프로 떼도 잘 안 떨어진다 반려템 비교 #4 반려동물"><details><summary><img class="th" src="img/T-20261010-17.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">털갈이 고양이, 빗 대신 장갑으로 쓸기</span><span class="m"><b>5,860원</b> · 반려템 #4</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">고양이 털이 소파와 옷에 붙어 테이프로 떼도 잘 안 떨어진다</p><p class="lim"><b>확인할 점</b>23×16cm라서, 손 길이만 대 보면 돼요.</p><p class="note">10.10 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hJAX9eW8Wq" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n16" data-no="2" data-s="살림템" data-q="가스레인지 뒤 벽, 투명 필름 한 장 가스레인지 뒤 벽에 기름이 튀어 닦아도 누렇게 얼룩이 남는다 살림템 비교 #2 주방"><details><summary><img class="th" src="img/T-20261009-45.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">가스레인지 뒤 벽, 투명 필름 한 장</span><span class="m"><b>4,900원</b> · 살림템 #2</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">가스레인지 뒤 벽에 기름이 튀어 닦아도 누렇게 얼룩이 남는다</p><p class="lim"><b>확인할 점</b>10m 롤이라 벽 가로·세로만 재 두면 돼요.</p><p class="note">10.10 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p><a class="go" href="https://naver.me/F6Q0ZBx5" target="_blank" rel="noopener sponsored nofollow">네이버에서 보기</a></div></details></li>
+<li class="row" id="n15" data-no="4" data-s="청소템" data-q="세면대 위 치약, 벽에 거꾸로 걸기 치약·폼클렌저 튜브가 세면대 위에 눕혀져 굴러다니고 끝까지 짜기도 번거롭다 청소템 비교 #4 청소·욕실"><details><summary><img class="th" src="img/T-20261010-12.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">세면대 위 치약, 벽에 거꾸로 걸기</span><span class="m"><b>7,700원</b> · 청소템 #4</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">치약·폼클렌저 튜브가 세면대 위에 눕혀져 굴러다니고 끝까지 짜기도 번거롭다</p><p class="lim"><b>확인할 점</b>붙일 벽이 타일인지 먼저 봐 두면 편해요.</p><p class="note">10.10 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.</p><a class="go" href="https://toss.shopping/_m/XoNBza76" target="_blank" rel="noopener sponsored nofollow">토스에서 보기</a></div></details></li>
+<li class="row" id="n14" data-no="3" data-s="청소템" data-q="테이프 자국, 플라스틱 날 스크래퍼 스티커·테이프 자국이 손톱으로 긁어도 안 떨어지고 칼로 긁자니 유리·타일에 흠집이 날까 걱정된다 청소템 비교 #3 청소·욕실"><details><summary><img class="th" src="img/T-20261010-03.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">테이프 자국, 플라스틱 날 스크래퍼</span><span class="m"><b>5,310원</b> · 청소템 #3</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">스티커·테이프 자국이 손톱으로 긁어도 안 떨어지고 칼로 긁자니 유리·타일에 흠집이 날까 걱정된다</p><p class="lim"><b>확인할 점</b>닳은 날은 리필 10개로 갈아 끼워요.</p><p class="note">10.10 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.</p><a class="go" href="https://toss.shopping/_m/pPST5J5B" target="_blank" rel="noopener sponsored nofollow">토스에서 보기</a></div></details></li>
+<li class="row" id="n13" data-no="3" data-s="생활템" data-q="베란다 빨래 자리, 창가 흡착 건조대 베란다 빨래 건조대를 안 쓸 때도 접어 두지 못해 벽 쪽 자리를 계속 차지한다 생활템 비교 #3 생활"><details><summary><img class="th" src="img/T-20261010-07.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">베란다 빨래 자리, 창가 흡착 건조대</span><span class="m"><b>56,000원</b> · 생활템 #3</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">베란다 빨래 건조대를 안 쓸 때도 접어 두지 못해 벽 쪽 자리를 계속 차지한다</p><p class="lim"><b>확인할 점</b>붙일 창가 유리만 먼저 골라 두면 돼요.</p><p class="note">10.10 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hIwj3dff3Y" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n12" data-no="2" data-s="생활템" data-q="티셔츠 개기, 손짐작 대신 접는 판 빨래를 매번 반듯하게 개기 어렵고 서랍에 넣으면 옷이 흐트러져 자리를 많이 차지한다 생활템 비교 #2 생활"><details><summary><img class="th" src="img/T-20261009-42.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">티셔츠 개기, 손짐작 대신 접는 판</span><span class="m"><b>5,900원</b> · 생활템 #2</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">빨래를 매번 반듯하게 개기 어렵고 서랍에 넣으면 옷이 흐트러져 자리를 많이 차지한다</p><p class="lim"><b>확인할 점</b>큰 셔츠가 많은 집이라면 판 크기만 확인해 보세요.</p><p class="note">10.09 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hHY14gUlgW" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n11" data-no="1" data-s="생활템" data-q="속옷·양말만 따로 돌리는 작은 세탁기 속옷과 양말을 큰 세탁기에 다른 빨래와 같이 돌리기 찜찜하고 손빨래는 번거롭다 생활템 비교 #1 생활"><details><summary><img class="th" src="img/T-20261009-44.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">속옷·양말만 따로 돌리는 작은 세탁기</span><span class="m"><b>59,000원</b> · 생활템 #1</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">속옷과 양말을 큰 세탁기에 다른 빨래와 같이 돌리기 찜찜하고 손빨래는 번거롭다</p><p class="lim"><b>확인할 점</b>소형이라 자주 빠는 집에 맞아요.</p><p class="note">10.09 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 포스팅은 네이버 쇼핑 커넥트 활동의 일환으로, 판매 시 수수료를 제공받습니다.</p><a class="go" href="https://naver.me/IGsYNELP" target="_blank" rel="noopener sponsored nofollow">네이버에서 보기</a></div></details></li>
+<li class="row" id="n10" data-no="1" data-s="살림템" data-q="진공 비닐 대신 지퍼팩, 뜯은 곡물 보관 개봉한 식품 봉지를 집게로 물려도 공기가 차서 눅눅해지고 자꾸 풀린다 살림템 비교 #1 주방"><details><summary><img class="th" src="img/T-20261009-01.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">진공 비닐 대신 지퍼팩, 뜯은 곡물 보관</span><span class="m"><b>10,100원</b> · 살림템 #1</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">개봉한 식품 봉지를 집게로 물려도 공기가 차서 눅눅해지고 자꾸 풀린다</p><p class="lim"><b>확인할 점</b>중형은 26×28cm, 쌀이라면 대형이요.</p><p class="note">10.09 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hHRjr3Bm8q" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n9" data-no="3" data-s="수납템" data-q="신발장 한 칸에 두 켤레, 슈즈렉 정리 신발장 칸마다 신발이 한 켤레씩만 들어가 금방 꽉 차고 남는 신발은 현관 바닥에 쌓인다 수납템 비교 #3 수납"><details><summary><img class="th" src="img/T-20261009-41.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">신발장 한 칸에 두 켤레, 슈즈렉 정리</span><span class="m"><b>6,355원</b> · 수납템 #3</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">신발장 칸마다 신발이 한 켤레씩만 들어가 금방 꽉 차고 남는 신발은 현관 바닥에 쌓인다</p><p class="lim"><b>확인할 점</b>칸 높이만 재 두면 맞추기 편해요.</p><p class="note">10.09 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><p class="note">이 콘텐츠는 토스쇼핑 쉐어링크 활동의 일환으로, 링크를 통한 구매가 발생하면 일정 수수료를 지급받습니다.</p><a class="go" href="https://toss.shopping/_m/tqYEhaj7" target="_blank" rel="noopener sponsored nofollow">토스에서 보기</a></div></details></li>
+<li class="row" id="n8" data-no="1" data-s="청소템" data-q="창틀 레일 틈새 때, 물티슈 대신 v자 패드 창틀 레일 틈새 먼지와 때가 걸레로는 닦이지 않는다 청소템 비교 #1 청소·욕실"><details><summary><img class="th" src="img/T-20261008-11.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">창틀 레일 틈새 때, 물티슈 대신 V자 패드</span><span class="m"><b>5,900원</b> · 청소템 #1</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">창틀 레일 틈새 먼지와 때가 걸레로는 닦이지 않는다</p><p class="lim"><b>확인할 점</b>창문 많은 집이라면 10개 돌려 쓰고 털어 말려요.</p><p class="note">10.09 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hG6PhLIEqi" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n7" data-no="3" data-s="반려템" data-q="산책 후 흙 발, 물티슈 대신 세척컵 산책 후 강아지 발의 흙과 오물을 닦아도 집 바닥에 발자국이 남는다 반려템 비교 #3 반려동물"><details><summary><img class="th" src="img/T-20261008-07.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">산책 후 흙 발, 물티슈 대신 세척컵</span><span class="m"><b>10,800원</b> · 반려템 #3</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">산책 후 강아지 발의 흙과 오물을 닦아도 집 바닥에 발자국이 남는다</p><p class="lim"><b>확인할 점</b>리뷰에선 뒤집어서 목욕 솔로도 쓴대요.</p><p class="note">10.08 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hFTNbwx2EC" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n6" data-no="2" data-s="반려템" data-q="고양이 모래 사막화, 빗자루 대신 벌집 매트 고양이 화장실 밖으로 모래가 튀어 바닥에 흩어져 매일 쓸어야 한다 반려템 비교 #2 반려동물"><details><summary><img class="th" src="img/T-20261008-04.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">고양이 모래 사막화, 빗자루 대신 벌집 매트</span><span class="m"><b>8,750원</b> · 반려템 #2</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">고양이 화장실 밖으로 모래가 튀어 바닥에 흩어져 매일 쓸어야 한다</p><p class="lim"><b>확인할 점</b>빗자루 대신, 밟으면 구멍으로 쏙.</p><p class="note">10.08 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hFLdv3O4rY" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n4" data-no="1" data-s="반려템" data-q="소파에 박힌 반려동물 털, 테이프 대신 밀어 모으기 소파와 이불에 붙은 반려동물 털이 손으로 잘 안 떨어져 매일 치워도 남는다 반려템 비교 #1 반려동물"><details><summary><img class="th" src="img/T-20261008-01.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">소파에 박힌 반려동물 털, 테이프 대신 밀어 모으기</span><span class="m"><b>6,150원</b> · 반려템 #1</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">소파와 이불에 붙은 반려동물 털이 손으로 잘 안 떨어져 매일 치워도 남는다</p><p class="lim"><b>확인할 점</b>가죽 소파엔 테이프가 낫다는 리뷰, 천인지 확인해 보세요.</p><p class="note">10.08 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/hFACFZl7T2" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+</ul>
+<button class="more-btn" id="more" type="button" hidden></button>
 </main>
 <footer>
+<p>링크·조건 점검 기준일 2026-10-14 · 가격과 재고는 판매처 페이지가 최신이에요.</p>
 <p>이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
-<p>이 페이지는 쿠키와 방문 추적 스크립트를 쓰지 않고, 개인정보를 받지 않아요.</p>
+<p>이 페이지는 쿠키와 방문 추적을 쓰지 않고, 개인정보를 받지 않아요.</p>
 </footer>
 </div>
+<script>
+(function(){
+var q=document.getElementById('q'),list=document.getElementById('list');
+if(!q||!list)return;
+var rows=[].slice.call(list.children),tabs=[].slice.call(document.querySelectorAll('.tabs button'));
+var more=document.getElementById('more'),hint=document.getElementById('hint'),sec=document.getElementById('sec');
+var RECENT=10,tab='',all=false;
+document.getElementById('find').hidden=false;
+if(tabs.length>2)document.querySelector('.tabs').hidden=false;
+function open(r){var d=r.querySelector('details');if(d)d.open=true;}
+function show(){
+var v=q.value.trim().replace(/^#/,'');
+if(v){
+var num=/^[0-9]+$/.test(v),lo=v.toLowerCase();
+var hits=rows.filter(function(r){return num?r.dataset.no===v:r.dataset.q.indexOf(lo)>=0;});
+var exact=hits.length>0;
+if(num&&!exact)hits=rows.filter(function(r){return r.dataset.no.indexOf(v)===0;});
+rows.forEach(function(r){r.hidden=hits.indexOf(r)<0;});
+sec.textContent=num?v+'번 영상':'검색 결과';
+hint.textContent=!hits.length?(num?v+'번은 아직 없어요. 영상 끝 번호를 다시 확인해 주세요.':'찾는 제품이 없어요.')
+:(num&&exact&&hits.length>1?v+'번이 '+hits.length+'개 있어요. 사진을 보고 골라 주세요.':'');
+if(hits.length===1)open(hits[0]);
+more.hidden=true;return;}
+hint.textContent='';
+var pool=rows.filter(function(r){return !r.dataset.off&&(!tab||r.dataset.s===tab);});
+var lim=(tab||all)?pool.length:RECENT;
+rows.forEach(function(r){r.hidden=true;});
+pool.slice(0,lim).forEach(function(r){r.hidden=false;});
+sec.textContent=tab||(all?'전체 영상':'최근 올린 영상');
+var rest=pool.length-lim;more.hidden=rest<=0;more.textContent='이전 영상 '+rest+'개 더 보기';}
+function pick(b){tab=b.dataset.s||'';tabs.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});}
+q.addEventListener('input',show);
+document.getElementById('find').addEventListener('submit',function(e){e.preventDefault();q.blur();});
+tabs.forEach(function(b){b.addEventListener('click',function(){pick(b);q.value='';show();});});
+more.addEventListener('click',function(){all=true;show();});
+function fromHash(){
+var h=decodeURIComponent(location.hash.slice(1));
+if(/^n[0-9]+$/.test(h)){var el=document.getElementById(h);if(el){q.value='';all=true;pick(tabs[0]);show();open(el);el.scrollIntoView();}return;}
+if(/^[0-9]+$/.test(h)){q.value=h;show();}}
+window.addEventListener('hashchange',fromHash);
+show();fromHash();
+})();
+</script>
 </body>
 </html>
