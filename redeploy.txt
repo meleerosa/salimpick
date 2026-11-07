@@ -1,1 +1,1 @@
-2026-11-07T11:27:32+09:00 media/T-20261106-09_reels.mp4 — 내 커밋 45bd8f0f Pages run failure — deploy: Timeout reached, aborting!
+2026-11-07T19:20:52+09:00 media/T-20261107-07_reels_cover.jpg — 내 커밋 ad24e273 Pages run failure — deploy: Timeout reached, aborting!
