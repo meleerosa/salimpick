@@ -19,9 +19,9 @@
 <meta name="twitter:card" content="summary_large_image">
 <!-- lib/link_hub.py 가 만든다. 직접 고치지 말 것. 쿠키·방문 추적 없음. -->
 <style>
-:root{--acc:#CC4418;--acc-ink:#B23A16;--on-acc:#FFFFFF;--tint:#FFF1EB;--bg:#FFFFFF;--band:#F2F4F6;--field:#F2F4F6;--ink:#191F28;--sub:#4E5968;--mute:#6B7684;--line:#E5E8EB;--off:#E5E8EB}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--acc:#FF7A52;--acc-ink:#FF9F80;--on-acc:#17171C;--tint:#3A231B;--bg:#17171C;--band:#101013;--field:#26262D;--ink:#ECECEE;--sub:#B0B4BB;--mute:#8B8F97;--line:#2C2C35;--off:#2C2C35}}
-:root[data-theme="dark"]{--acc:#FF7A52;--acc-ink:#FF9F80;--on-acc:#17171C;--tint:#3A231B;--bg:#17171C;--band:#101013;--field:#26262D;--ink:#ECECEE;--sub:#B0B4BB;--mute:#8B8F97;--line:#2C2C35;--off:#2C2C35}
+:root{--acc:#FF6A00;--acc-ink:#B34700;--on-acc:#121212;--tint:#FFF1E6;--bg:#FFFFFF;--band:#F2F4F6;--field:#F2F4F6;--ink:#191F28;--sub:#4E5968;--mute:#6B7684;--line:#E5E8EB;--off:#E5E8EB}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--acc:#FF6A00;--acc-ink:#FF6A00;--on-acc:#121212;--tint:#412617;--bg:#17171C;--band:#101013;--field:#26262D;--ink:#ECECEE;--sub:#B0B4BB;--mute:#8B8F97;--line:#2C2C35;--off:#2C2C35}}
+:root[data-theme="dark"]{--acc:#FF6A00;--acc-ink:#FF6A00;--on-acc:#121212;--tint:#412617;--bg:#17171C;--band:#101013;--field:#26262D;--ink:#ECECEE;--sub:#B0B4BB;--mute:#8B8F97;--line:#2C2C35;--off:#2C2C35}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",Pretendard,system-ui,"Malgun Gothic","Noto Sans KR",sans-serif;word-break:keep-all;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
@@ -40,7 +40,7 @@ h1{margin:26px 0 6px;font-size:26px;line-height:1.35;font-weight:700;letter-spac
 .find label{display:block;margin:0 0 6px;font-size:13px;font-weight:600;color:var(--mute)}
 .find input{display:block;width:100%;height:60px;margin:0;padding:0 18px;border:0;border-radius:16px;background:var(--field);color:var(--ink);font:inherit;font-size:24px;font-weight:700;letter-spacing:.02em;outline:none;-webkit-appearance:none;appearance:none}
 .find input::placeholder{color:var(--mute);font-size:17px;font-weight:600;letter-spacing:0}
-.find input:focus{box-shadow:inset 0 0 0 2px var(--acc)}
+.find input:focus{box-shadow:inset 0 0 0 2px var(--acc-ink)}
 .find input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
 .hint{min-height:21px;margin:10px 0 0;font-size:14px;color:var(--sub)}
 .band{height:12px;margin:14px 0 0;background:var(--band)}
@@ -52,7 +52,7 @@ h1{margin:26px 0 6px;font-size:26px;line-height:1.35;font-weight:700;letter-spac
 .list{list-style:none;margin:0;padding:0}
 .row summary{display:grid;grid-template-columns:56px minmax(0,1fr) 16px;gap:14px;align-items:center;padding:12px 0;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
 .row summary::-webkit-details-marker{display:none}
-.row summary:focus-visible{outline:2px solid var(--acc);outline-offset:2px;border-radius:12px}
+.row summary:focus-visible{outline:2px solid var(--acc-ink);outline-offset:2px;border-radius:12px}
 .th{width:56px;height:56px;border-radius:12px;object-fit:cover;background:var(--off);display:block}
 .tx{min-width:0;display:grid;gap:2px}
 .t{font-size:16px;font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -94,7 +94,7 @@ footer p{margin:4px 0}
 <h2 class="sec" id="sec">최근 올린 영상</h2>
 <main>
 <ul class="list" id="list">
-<li class="row" id="n111" data-no="170" data-s="살림템" data-q="뽁뽁이 말고 이거 창문 찬바람 끝 겨울 밤 창문 틈으로 찬바람이 들어와 방이 춥다 살림템 비교 #170 셀프보수"><details><summary><img class="th" src="img/T-20261101-15.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">뽁뽁이 말고 이거 창문 찬바람 끝</span><span class="m"><span class="new">NEW</span><b>12,510원</b> · 살림템 #170</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">겨울 밤 창문 틈으로 찬바람이 들어와 방이 춥다</p><p class="note">11.03 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/imELglosii" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
+<li class="row" id="n111" data-no="170" data-s="살림템" data-q="뽁뽁이 말고 이거 창문 찬바람 끝 겨울 밤 창문 틈으로 찬바람이 들어와 방이 춥다 살림템 비교 #170 셀프보수"><details><summary><img class="th" src="img/T-20261101-15.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">뽁뽁이 말고 이거 창문 찬바람 끝</span><span class="m"><span class="new">새 영상</span><b>12,510원</b> · 살림템 #170</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">겨울 밤 창문 틈으로 찬바람이 들어와 방이 춥다</p><p class="note">11.03 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/imELglosii" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
 <li class="row" id="n110" data-no="169" data-s="수납템" data-q="바지 탑 무너지는 이유 칸막이 바지 정리함 개어 둔 청바지와 바지가 서랍에서 하나 꺼내면 와르르 무너져 매번 다시 갠다 수납템 비교 #169 수납"><details><summary><img class="th" src="img/T-20261101-12.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">바지 탑 무너지는 이유 칸막이 바지 정리함</span><span class="m"><b>28,600원</b> · 수납템 #169</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">개어 둔 청바지와 바지가 서랍에서 하나 꺼내면 와르르 무너져 매번 다시 갠다</p><p class="note">11.03 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/imA6ztxA4W" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
 <li class="row" id="n109" data-no="167" data-s="살림템" data-q="싱크대 물바다 끝난 이유 컵 물기가 알아서 빠져 설거지한 컵과 그릇을 올려둘 곳이 없어 싱크대 가장자리가 물바다가 된다 살림템 비교 #167 주방"><details><summary><img class="th" src="img/T-20261031-21.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">싱크대 물바다 끝난 이유 컵 물기가 알아서 빠져</span><span class="m"><b>12,900원</b> · 살림템 #167</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">설거지한 컵과 그릇을 올려둘 곳이 없어 싱크대 가장자리가 물바다가 된다</p><p class="note">11.02 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/ikWhrQtIdw" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
 <li class="row" id="n108" data-no="166" data-s="청소템" data-q="접이식 선반 쓰는 이유 안 쓸 땐 벽에 착 좁은 욕실 세면대 옆에 칫솔·세안제 둘 곳이 없어 늘 세면대 위가 어수선하다 청소템 비교 #166 청소·욕실"><details><summary><img class="th" src="img/T-20261030-13.jpg" alt="" width="56" height="56" loading="lazy"><span class="tx"><span class="t">접이식 선반 쓰는 이유 안 쓸 땐 벽에 착</span><span class="m"><b>24,800원</b> · 청소템 #166</span></span><span class="chev" aria-hidden="true"></span></summary><div class="more"><p class="prob">좁은 욕실 세면대 옆에 칫솔·세안제 둘 곳이 없어 늘 세면대 위가 어수선하다</p><p class="note">11.02 기준 가격이에요. 지금 가격은 판매처에서 확인해 주세요.</p><a class="go" href="https://link.coupang.com/a/ijkximtuhw" target="_blank" rel="noopener sponsored nofollow">쿠팡에서 보기</a></div></details></li>
@@ -205,7 +205,7 @@ footer p{margin:4px 0}
 <button class="more-btn" id="more" type="button" hidden></button>
 </main>
 <footer>
-<p>링크·조건 점검 기준일 2026-11-25 · 가격과 재고는 판매처 페이지가 최신이에요.</p>
+<p>링크·조건 점검 기준일 2026-11-26 · 가격과 재고는 판매처 페이지가 최신이에요.</p>
 <p>이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
 <p>이 페이지는 쿠키와 방문 추적을 쓰지 않고, 개인정보를 받지 않아요.</p>
 </footer>
